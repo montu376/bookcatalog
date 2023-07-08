@@ -1,1 +1,0 @@
-INSERT INTO book VALUES ("87cd252a-d14f-11ed-afa1-0242ac120002",200, "John Doe", "The Elephant Whispherers",300);
