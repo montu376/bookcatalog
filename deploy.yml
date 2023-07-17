@@ -15,7 +15,7 @@ spec:
         env: test
     spec:
       volumes:
-        - name: config
+        - name: configmap-book-catalog-volume
           configMap: 
                 name: configmap-book-catalog
       containers:
@@ -83,7 +83,7 @@ spec:
                   key:  mysql.service.name
 
           volumeMounts:
-            - name: configmap-book-catalog-volum
+            - name: configmap-book-catalog-volume
               readOnly: true
               mountPath: "/config/configmap-book-catalog" 
           ports:
