@@ -1,0 +1,29 @@
+server:
+  port: 0
+spring:
+  application:
+    name: ${APPLICATIONNAME}  
+  datasource: 
+    url: ${DATASOURCEURL}
+    username: ${DATASOURCEUSERNAME}
+    password: ${DATASOURCEPASSWORD}
+    driver-class-name: ${DATASOURCEDRIVERCLASS} 
+  hibernate:
+    ddl-auto: ${HIBERNATEDDLAUTO}
+  jpa:
+    show-sql=${HIBERNATESHOWSQL}
+  properties: 
+    dialect=${HIBERNATEDIALECT}
+
+eureka:
+  client:
+   fetch-registry: true
+   register-with-eureka: true
+   serviceUrl: 
+      defaultZone: ${EUREKA_URI:http://microservice-discovery.default.svc.cluster.local:8761/eureka}
+   eureka-server-d-n-s-name: microservice-discovery.default.svc.cluster.local
+management:
+  endpoints:
+    web:
+    exposure:
+      include: "*"
