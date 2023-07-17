@@ -17,7 +17,7 @@ spec:
       volumes:
         - name: config
           configMap: 
-                name: configMap-book-catalog
+                name: configmap-book-catalog
       containers:
         - name:  test-book-catalog
           image: montud/test-book-catalog:latest
@@ -25,74 +25,74 @@ spec:
             - name: DATASOURCEURL
               valueFrom:
                 configMapKeyRef: 
-                  name:  configMap-book-catalog
+                  name:  configmap-book-catalog
                   key: spring.datasource.url
 
             - name: DATASOURCEUSERNAME
               valueFrom:
                 configMapKeyRef: 
-                  name:  configMap-book-catalog
+                  name:  configmap-book-catalog
                   key: spring.datasource.username
 
             - name: DATASOURCEPASSWORD
               valueFrom:
                 configMapKeyRef: 
-                  name:  configMap-book-catalog
+                  name:  configmap-book-catalog
                   key: spring.datasource.password
 
             - name: DATASOURCEDRIVERCLASS
               valueFrom:
                 configMapKeyRef: 
-                  name:  configMap-book-catalog
+                  name:  configmap-book-catalog
                   key: spring.datasource.driver-class-name
 
             - name: HIBERNATEDDLAUTO
               valueFrom:
                 configMapKeyRef: 
-                  name: configMap-book-catalog
+                  name: configmap-book-catalog
                   key: spring.jpa.hibernate.ddl-auto
 
             - name: HIBERNATESHOWSQL
               valueFrom:
                 configMapKeyRef: 
-                  name:  configMap-book-catalog
+                  name:  configmap-book-catalog
                   key: spring.jpa.show-sql
 
             - name: HIBERNATEDIALECT
               valueFrom:
                 configMapKeyRef: 
-                  name:  configMap-book-catalog
+                  name:  configmap-book-catalog
                   key: spring.jpa.properties.hibernate.dialect
 
             - name: APPLICATIONNAME
               valueFrom:
                 configMapKeyRef: 
-                  name:  configMap-book-catalog
+                  name:  configmap-book-catalog
                   key: application.name
 
             - name: SERVERPORT
               valueFrom:
                 configMapKeyRef: 
-                  name:  configMap-book-catalog
+                  name:  configmap-book-catalog
                   key: server.port
             
             - name: MYSQLSERVICENAME
               valueFrom:
                 configMapKeyRef: 
-                  name:  configMap-book-catalog
+                  name:  configmap-book-catalog
                   key:  mysql.service.name
 
           volumeMounts:
-            - name: configMap-book-catalog-volum
+            - name: configmap-book-catalog-volum
               readOnly: true
-              mountPath: "/config/configMap-book-catalog" 
+              mountPath: "/config/configmap-book-catalog" 
           ports:
             - containerPort: 8080
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: configMap-book-catalog
+  name: configmap-book-catalog
 data:
   server.port: "0"
   application.name: "bookcatalog"
