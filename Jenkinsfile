@@ -9,13 +9,6 @@ pipeline{
                 sh 'mvn package'
                 sh 'docker build -t montud/book-catalog:latest .'
             }
-
-            post{
-                success{
-                    archiveArtifacts artifacts: 'target/*.jar'
-                    
-                }        
-            }
         } 
 
         stage('docker push'){
@@ -29,8 +22,11 @@ pipeline{
 
 
         stage('Kubernates deploy'){
+            agent {
+                label 'microkube'
+            }
             steps {
-                bat 'C:\\Users\\coolm\\kubectl.exe apply -f deploy.yml'
+               sh 'microk8s kubectl apply -f deploy.yml'
             }
         }
     }
