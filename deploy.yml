@@ -5,7 +5,7 @@ metadata:
   labels: 
     env: test
 spec:
-  replicas: 1
+  replicas: 
   selector:
     matchLabels:
       env: test  
@@ -76,11 +76,6 @@ spec:
                   name:  configmap-book-catalog
                   key: server.port
             
-            - name: MYSQLSERVICENAME
-              valueFrom:
-                configMapKeyRef: 
-                  name:  configmap-book-catalog
-                  key:  mysql.service.name
 
           volumeMounts:
             - name: configmap-book-catalog-volume
