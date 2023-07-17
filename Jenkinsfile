@@ -7,7 +7,7 @@ pipeline{
             }
             steps {
                 sh 'mvn package -DskipTests'
-                sh 'docker build -t montud/book-catalog:latest .'
+                sh 'docker build -t montud/test-book-catalog:latest .'
             }
         } 
 
@@ -16,7 +16,7 @@ pipeline{
                 label 'montuUbuntu'
             }
             steps {
-                sh 'docker push montud/book-catalog:latest'
+                sh 'docker push montud/test-book-catalog:latest'
             }
         }
 
